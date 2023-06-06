@@ -821,6 +821,8 @@ class XmlBuilder extends RequestBase
         $this->xml->request->addChild("filterOptions");
         if (strlen($this->transactionID) > 0) {
             $this->xml->request->filterOptions->addChild("transactionId", $this->transactionID);
+        } elseif (strlen($this->orderId) > 0) {
+            $this->xml->request->filterOptions->addChild("orderId", $this->orderId);
         } elseif (strtolower($this->period) == "range") {
             $this->xml->request->filterOptions->addChild("period", $this->period);
             $this->xml->request->filterOptions->addChild("pageSize", $this->pageSize);
